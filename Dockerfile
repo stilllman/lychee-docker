@@ -20,6 +20,8 @@ RUN service mysql start && \
     mysql -uroot -e "CREATE DATABASE IF NOT EXISTS lychee;" && \
     mysql -uroot -e "CREATE USER 'lychee'@'localhost' IDENTIFIED BY 'lychee';" && \
     mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'lychee'@'localhost' WITH GRANT OPTION;" && \
+    mysql -uroot -e "CREATE USER 'lychee'@'%' IDENTIFIED BY 'lychee';" && \
+    mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'lychee'@'%' WITH GRANT OPTION;" && \
     mysql -uroot -e "FLUSH PRIVILEGES;"
 RUN mkdir /var/lib/mysql_init && \
     mv /var/lib/mysql/* /var/lib/mysql_init
